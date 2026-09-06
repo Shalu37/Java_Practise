@@ -17,9 +17,26 @@ public class BestTimeToBuySellStock{
     }
 
 
+
+    // Optimal: O(n) time, O(1) space
+    public static int maxProfitOptimal(int[] prices) {
+        int minPriceSoFar = Integer.MAX_VALUE;
+        int maxProfit = 0;
+
+        for (int price : prices) {
+            if (price < minPriceSoFar) {
+                minPriceSoFar = price;
+            } else if (price - minPriceSoFar > maxProfit) {
+                maxProfit = price - minPriceSoFar;
+            }
+        }
+        return maxProfit;
+    }
+
+
     public static void main(String[] args) {
         int [] prices = {7,1,5,3,6,4};
-        System.out.println("Max Profit: "  + maxProfitSell(prices));
+        System.out.println("Max Profit: "  + maxProfitOptimal(prices));
     }
     
 }
